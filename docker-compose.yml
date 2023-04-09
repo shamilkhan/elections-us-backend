@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  api:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=postgres://postgres:password@db:5432/us-elections
+    restart: always
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: us-elections
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:
