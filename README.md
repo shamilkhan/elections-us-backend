@@ -52,6 +52,8 @@ The following endpoints are available:
 
 ## 🗂️ Data Model
 
+![Database Schema](./docs/database-schema.png)
+
 The data model for the API is as follows:
 
 - `Election`: Represents an election, with a name, year, type, start date, and end date.
