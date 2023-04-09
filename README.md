@@ -1,73 +1,65 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# 🗳️ US Elections API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This project provides an API for accessing data on US elections. The API is built with Node.js, TypeScript, and PostgreSQL, and is powered by the Express.js framework.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## 🚀 Getting Started
 
-## Description
+To get started with the API, follow these steps:
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+1. Clone the repository: `git clone https://github.com/example/us-elections-api.git`.
+2. Install dependencies using `yarn`: `yarn install`.
+3. Run database migrations: `yarn run typeorm migration:run`.
+4. Start the server: `yarn start`.
 
-## Installation
+Once the server is running, you can access the API at `http://localhost:3000`.
 
-```bash
-$ yarn install
-```
+## 🔗 API Endpoints
 
-## Running the app
+The following endpoints are available:
 
-```bash
-# development
-$ yarn run start
+### `/api/v1/elections`
 
-# watch mode
-$ yarn run start:dev
+- `GET /api/v1/elections`: Returns a list of all elections.
+- `GET /api/v1/elections/:id`: Returns details of a specific election.
 
-# production mode
-$ yarn run start:prod
-```
+### `/api/v1/candidates`
 
-## Test
+- `GET /api/v1/candidates`: Returns a list of all candidates.
+- `GET /api/v1/candidates/:id`: Returns details of a specific candidate.
 
-```bash
-# unit tests
-$ yarn run test
+### `/api/v1/parties`
 
-# e2e tests
-$ yarn run test:e2e
+- `GET /api/v1/parties`: Returns a list of all parties.
+- `GET /api/v1/parties/:id`: Returns details of a specific party.
 
-# test coverage
-$ yarn run test:cov
-```
+### `/api/v1/states`
 
-## Support
+- `GET /api/v1/states`: Returns a list of all states.
+- `GET /api/v1/states/:id`: Returns details of a specific state.
+- `GET /api/v1/states/:id/election-results`: Returns the election results for a specific state.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### `/api/v1/counties`
 
-## Stay in touch
+- `GET /api/v1/counties`: Returns a list of all counties.
+- `GET /api/v1/counties/:id`: Returns details of a specific county.
+- `GET /api/v1/counties/:id/election-results`: Returns the election results for a specific county.
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### `/api/v1/cities`
 
-## License
+- `GET /api/v1/cities`: Returns a list of all cities.
+- `GET /api/v1/cities/:id`: Returns details of a specific city.
+- `GET /api/v1/cities/:id/election-results`: Returns the election results for a specific city.
 
-Nest is [MIT licensed](LICENSE).
+## 🗂️ Data Model
+
+The data model for the API is as follows:
+
+- `Election`: Represents an election, with a name, year, type, start date, and end date.
+- `Candidate`: Represents a candidate, with a name and a party affiliation.
+- `Party`: Represents a political party, with a name.
+- `State`: Represents a US state, with a name, number of electoral votes, and geographic boundary.
+- `County`: Represents a county within a US state, with a name, geographic boundary, and reference to its parent state.
+- `City`: Represents a city within a US state and county, with a name, geographic boundary, and references to its parent state and county.
+- `StateElectionResult`: Represents the election results for a specific state, with a reference to the election, state, winner, total votes, and a breakdown of votes by candidate.
+- `CountyElectionResult`: Represents the election results for a specific county, with a reference to the election, county, winner, total votes, and a breakdown of votes by candidate.
+- `CityElectionResult`: Represents the election results for a specific city, with a reference to the election, city,
