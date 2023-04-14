@@ -3,9 +3,9 @@ import { City } from './city.entity';
 import { CityService } from './city.service';
 import { CityElectionResult } from '../city-election-result/city-election-result.entity';
 
-@Controller('api/v1/cities')
+@Controller('cities')
 export class CityController {
-  constructor(private cityService: CityService) {}
+  constructor(private readonly cityService: CityService) {}
 
   @Get()
   findAll(): Promise<City[]> {

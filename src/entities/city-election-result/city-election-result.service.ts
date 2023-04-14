@@ -7,7 +7,7 @@ import { Equal, Repository } from 'typeorm';
 export class CityElectionResultService {
   constructor(
     @InjectRepository(CityElectionResult)
-    private cityElectionResultRepository: Repository<CityElectionResult>,
+    private readonly cityElectionResultRepository: Repository<CityElectionResult>,
   ) {}
 
   findByCityId(cityId: number): Promise<CityElectionResult[]> {

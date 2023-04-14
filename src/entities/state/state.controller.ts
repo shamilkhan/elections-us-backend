@@ -1,7 +1,7 @@
 import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
 import { StateService } from './state.service';
 
-@Controller('api/v1/states')
+@Controller('states')
 export class StateController {
   constructor(private readonly stateService: StateService) {}
 

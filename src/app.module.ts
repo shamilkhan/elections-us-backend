@@ -1,7 +1,5 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { CityModule } from './entities/city/city.module';
 import { StateModule } from './entities/state/state.module';
 import { CountyModule } from './entities/county/county.module';
@@ -26,7 +24,5 @@ import { dataSourceOptions } from './config/typeorm.config';
     CountyElectionResultModule,
     StateElectionResultModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}

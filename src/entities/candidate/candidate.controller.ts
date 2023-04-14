@@ -2,9 +2,9 @@ import { Controller, Get, Param, ParseIntPipe, Req } from '@nestjs/common';
 import { Candidate } from './candidate.entity';
 import { CandidateService } from './candidate.service';
 
-@Controller('api/v1/candidates')
+@Controller('candidates')
 export class CandidateController {
-  constructor(private candidateService: CandidateService) {}
+  constructor(private readonly candidateService: CandidateService) {}
 
   @Get()
   findAll(): Promise<Candidate[]> {

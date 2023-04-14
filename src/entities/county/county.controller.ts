@@ -1,7 +1,7 @@
 import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
 import { CountyService } from './county.service';
 
-@Controller('api/v1/counties')
+@Controller('counties')
 export class CountyController {
   constructor(private readonly countyService: CountyService) {}
 

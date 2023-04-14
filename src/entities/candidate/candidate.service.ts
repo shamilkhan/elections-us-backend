@@ -7,7 +7,7 @@ import { Candidate } from './candidate.entity';
 export class CandidateService {
   constructor(
     @InjectRepository(Candidate)
-    private candidateRepository: Repository<Candidate>,
+    private readonly candidateRepository: Repository<Candidate>,
   ) {}
 
   findAll(): Promise<Candidate[]> {

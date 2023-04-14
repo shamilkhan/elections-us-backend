@@ -8,8 +8,8 @@ import { CityElectionResultService } from './../city-election-result/city-electi
 export class CityService {
   constructor(
     @InjectRepository(City)
-    private cityRepository: Repository<City>,
-    private cityElectionResultService: CityElectionResultService,
+    private readonly cityRepository: Repository<City>,
+    private readonly cityElectionResultService: CityElectionResultService,
   ) {}
 
   findAll(): Promise<City[]> {

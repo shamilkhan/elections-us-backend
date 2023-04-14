@@ -1,7 +1,7 @@
 import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
 import { ElectionService } from './election.service';
 
-@Controller('api/v1/elections')
+@Controller('elections')
 export class ElectionController {
   constructor(private readonly electionService: ElectionService) {}
 
