@@ -1,4 +1,4 @@
-import { County } from './county';
+import { County } from './county.entity';
 
 describe('County', () => {
   it('should be defined', () => {

@@ -1,4 +1,4 @@
-import { CityElectionResult } from './city-election-result';
+import { CityElectionResult } from './city-election-result.entity';
 
 describe('CityElectionResult', () => {
   it('should be defined', () => {

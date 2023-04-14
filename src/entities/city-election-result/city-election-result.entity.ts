@@ -1,18 +1,18 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
-import { Election } from '../election/election';
-import { State } from '../state/state';
-import { Candidate } from '../candidate/candidate';
+import { Election } from '../election/election.entity';
+import { City } from '../city/city.entity';
+import { Candidate } from '../candidate/candidate.entity';
 
 @Entity()
-export class StateElectionResult {
+export class CityElectionResult {
   @PrimaryGeneratedColumn()
   id: number;
 
   @ManyToOne(() => Election, { onDelete: 'CASCADE' })
   election: Election;
 
-  @ManyToOne(() => State, { onDelete: 'CASCADE' })
-  state: State;
+  @ManyToOne(() => City, { onDelete: 'CASCADE' })
+  city: City;
 
   @ManyToOne(() => Candidate, { onDelete: 'CASCADE' })
   winner: Candidate;
@@ -21,5 +21,5 @@ export class StateElectionResult {
   totalVotes: number;
 
   @Column('jsonb')
-  candidateVotes: any;
+  candidateVotes: Record<number, number>;
 }

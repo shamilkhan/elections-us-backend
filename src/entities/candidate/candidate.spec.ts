@@ -1,4 +1,4 @@
-import { Candidate } from './candidate';
+import { Candidate } from './candidate.entity';
 
 describe('Candidate', () => {
   it('should be defined', () => {
