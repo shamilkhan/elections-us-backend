@@ -1,4 +1,4 @@
-import { Controller, Get, Param, ParseIntPipe, Req } from '@nestjs/common';
+import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
 import { Candidate } from './candidate.entity';
 import { CandidateService } from './candidate.service';
 

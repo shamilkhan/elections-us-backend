@@ -1,4 +1,4 @@
-import { Controller, Get, Param, ParseIntPipe, Req } from '@nestjs/common';
+import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
 import { City } from './city.entity';
 import { CityService } from './city.service';
 import { CityElectionResult } from '../city-election-result/city-election-result.entity';
