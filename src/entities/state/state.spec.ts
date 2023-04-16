@@ -1,4 +1,4 @@
-import { State } from './state';
+import { State } from './state.entity';
 
 describe('State', () => {
   it('should be defined', () => {
