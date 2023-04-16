@@ -1,4 +1,4 @@
-import { Election } from './election';
+import { Election } from './election.entity';
 
 describe('Election', () => {
   it('should be defined', () => {

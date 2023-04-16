@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
-import { Party } from '../party/party';
+import { Party } from '../party/party.entity';
 
 @Entity()
 export class Candidate {

@@ -1,4 +1,4 @@
-import { City } from './city';
+import { City } from './city.entity';
 
 describe('City', () => {
   it('should be defined', () => {
