@@ -12,7 +12,7 @@ export class CandidateController {
   }
 
   @Get(':id')
-  findOneById(@Param('id', ParseIntPipe) id: number): Promise<Candidate> {
-    return this.candidateService.findOneById(id);
+  findOneBy(@Param('id', ParseIntPipe) id: number): Promise<Candidate> {
+    return this.candidateService.findOneBy({ id });
   }
 }

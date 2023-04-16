@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Party } from './party.entity';
+import { FindOptionsWhereId } from 'src/app.interface';
 
 @Injectable()
 export class PartyService {
@@ -14,7 +15,7 @@ export class PartyService {
     return this.partyRepository.find();
   }
 
-  findOne(id: number): Promise<Party> {
+  findOneBy({ id }: FindOptionsWhereId): Promise<Party | null> {
     return this.partyRepository.findOneBy({ id });
   }
 }

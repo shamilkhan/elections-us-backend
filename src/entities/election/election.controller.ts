@@ -11,7 +11,7 @@ export class ElectionController {
   }
 
   @Get(':id')
-  findOne(@Param('id', ParseIntPipe) id: number) {
-    return this.electionService.findOne(id);
+  findOneBy(@Param('id', ParseIntPipe) id: number) {
+    return this.electionService.findOneBy({ id });
   }
 }

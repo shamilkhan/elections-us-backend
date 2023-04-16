@@ -1,9 +1,13 @@
 import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
 import { CountyService } from './county.service';
+import { CountyElectionResultService } from '../county-election-result/county-election-result.service';
 
 @Controller('counties')
 export class CountyController {
-  constructor(private readonly countyService: CountyService) {}
+  constructor(
+    private readonly countyService: CountyService,
+    private readonly countyElectionResultService: CountyElectionResultService,
+  ) {}
 
   @Get()
   findAll() {
@@ -11,12 +15,12 @@ export class CountyController {
   }
 
   @Get(':id')
-  findOne(@Param('id', ParseIntPipe) id: number) {
-    return this.countyService.findOne(id);
+  findOneBy(@Param('id', ParseIntPipe) id: number) {
+    return this.countyService.findOneBy({ id });
   }
 
   @Get(':id/election-results')
   findElectionResults(@Param('id', ParseIntPipe) id: number) {
-    return this.countyService.findElectionResults(id);
+    return this.countyElectionResultService.findByCountyId(id);
   }
 }

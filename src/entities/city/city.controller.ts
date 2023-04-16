@@ -1,11 +1,14 @@
 import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
 import { City } from './city.entity';
 import { CityService } from './city.service';
-import { CityElectionResult } from '../city-election-result/city-election-result.entity';
+import { CityElectionResultService } from '../city-election-result/city-election-result.service';
 
 @Controller('cities')
 export class CityController {
-  constructor(private readonly cityService: CityService) {}
+  constructor(
+    private readonly cityService: CityService,
+    private readonly cityElectionResultService: CityElectionResultService,
+  ) {}
 
   @Get()
   findAll(): Promise<City[]> {
@@ -13,14 +16,12 @@ export class CityController {
   }
 
   @Get(':id')
-  findOneById(@Param('id', ParseIntPipe) id: number): Promise<City> {
-    return this.cityService.findOneById(id);
+  findOneBy(@Param('id', ParseIntPipe) id: number): Promise<City> {
+    return this.cityService.findOneBy({ id });
   }
 
   @Get(':id/election-results')
-  findElectionResults(
-    @Param('id', ParseIntPipe) id: number,
-  ): Promise<CityElectionResult[]> {
-    return this.cityService.findElectionResults(id);
+  findElectionResults(@Param('id', ParseIntPipe) id: number) {
+    return this.cityElectionResultService.findByCityId(id);
   }
 }

@@ -11,7 +11,7 @@ export class PartyController {
   }
 
   @Get(':id')
-  findOne(@Param('id', ParseIntPipe) id: number) {
-    return this.partyService.findOne(id);
+  findOneBy(@Param('id', ParseIntPipe) id: number) {
+    return this.partyService.findOneBy({ id });
   }
 }
