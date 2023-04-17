@@ -10,10 +10,13 @@ import { CityElectionResultModule } from './entities/city-election-result/city-e
 import { CountyElectionResultModule } from './entities/county-election-result/county-election-result.module';
 import { StateElectionResultModule } from './entities/state-election-result/state-election-result.module';
 import { dataSourceOptions } from './config/typeorm.config';
+import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
+import { APP_GUARD } from '@nestjs/core';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({ ...dataSourceOptions, autoLoadEntities: true }),
+    ThrottlerModule.forRoot({ ttl: 60, limit: 10 }),
     CityModule,
     StateModule,
     CountyModule,
@@ -23,6 +26,12 @@ import { dataSourceOptions } from './config/typeorm.config';
     CityElectionResultModule,
     CountyElectionResultModule,
     StateElectionResultModule,
+  ],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: ThrottlerGuard,
+    },
   ],
 })
 export class AppModule {}
