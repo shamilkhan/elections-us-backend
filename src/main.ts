@@ -2,13 +2,10 @@ import { NestFactory } from '@nestjs/core';
 import { SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { DocumentBuilder } from '@nestjs/swagger';
-import { VersioningType } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app
-    .setGlobalPrefix('api')
-    .enableVersioning({ type: VersioningType.URI, defaultVersion: '1' });
+  app.setGlobalPrefix('api/v1');
 
   const config = new DocumentBuilder()
     .setTitle('Elections API')
