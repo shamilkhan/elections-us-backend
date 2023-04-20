@@ -1,7 +1,9 @@
 import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
 import { CountyService } from './county.service';
 import { CountyElectionResultService } from '../county-election-result/county-election-result.service';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('counties')
 @Controller('counties')
 export class CountyController {
   constructor(

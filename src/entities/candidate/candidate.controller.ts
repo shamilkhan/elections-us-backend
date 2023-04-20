@@ -1,18 +1,19 @@
 import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
-import { Candidate } from './candidate.entity';
 import { CandidateService } from './candidate.service';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('candidates')
 @Controller('candidates')
 export class CandidateController {
   constructor(private readonly candidateService: CandidateService) {}
 
   @Get()
-  findAll(): Promise<Candidate[]> {
+  findAll() {
     return this.candidateService.findAll();
   }
 
   @Get(':id')
-  findOneBy(@Param('id', ParseIntPipe) id: number): Promise<Candidate> {
+  findOneBy(@Param('id', ParseIntPipe) id: number) {
     return this.candidateService.findOneBy({ id });
   }
 }

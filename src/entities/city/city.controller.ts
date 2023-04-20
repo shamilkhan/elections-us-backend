@@ -1,8 +1,9 @@
 import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
-import { City } from './city.entity';
 import { CityService } from './city.service';
 import { CityElectionResultService } from '../city-election-result/city-election-result.service';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('cities')
 @Controller('cities')
 export class CityController {
   constructor(
@@ -11,12 +12,12 @@ export class CityController {
   ) {}
 
   @Get()
-  findAll(): Promise<City[]> {
+  findAll() {
     return this.cityService.findAll();
   }
 
   @Get(':id')
-  findOneBy(@Param('id', ParseIntPipe) id: number): Promise<City> {
+  findOneBy(@Param('id', ParseIntPipe) id: number) {
     return this.cityService.findOneBy({ id });
   }
 
