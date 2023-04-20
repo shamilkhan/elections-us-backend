@@ -1,24 +1,28 @@
-version: '3'
+version: '3.8'
 
 services:
-  api:
-    build: .
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: elections_us
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: node-app:18
     ports:
       - "3000:3000"
     depends_on:
       - db
     environment:
-      - NODE_ENV=production
-      - DATABASE_URL=postgres://postgres:password@db:5432/us-elections
-    restart: always
-
-  db:
-    image: postgres:13
-    environment:
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: us-elections
-    volumes:
-      - db-data:/var/lib/postgresql/data
-
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_DATABASE: elections_us
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgres
 volumes:
-  db-data:
+  postgres_data:
