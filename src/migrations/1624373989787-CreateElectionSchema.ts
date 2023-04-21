@@ -94,40 +94,40 @@ export class CreateElectionSchema1624373989787 implements MigrationInterface {
       'CREATE INDEX IF NOT EXISTS idx_cities_boundary ON cities USING GIST(boundary);',
     );
     await queryRunner.query(
-      'ALTER TABLE IF EXISTS state_election_results ADD CONSTRAINT IF NOT EXISTS fk_state_election_results_elections FOREIGN KEY (election_id) REFERENCES elections(id) ON DELETE CASCADE;',
+      'ALTER TABLE IF EXISTS state_election_results ADD CONSTRAINT fk_state_election_results_elections FOREIGN KEY (election_id) REFERENCES elections(id) ON DELETE CASCADE;',
     );
     await queryRunner.query(
-      'ALTER TABLE IF EXISTS state_election_results ADD CONSTRAINT IF NOT EXISTS fk_state_election_results_states FOREIGN KEY (state_id) REFERENCES states(id) ON DELETE CASCADE;',
+      'ALTER TABLE IF EXISTS state_election_results ADD CONSTRAINT fk_state_election_results_states FOREIGN KEY (state_id) REFERENCES states(id) ON DELETE CASCADE;',
     );
     await queryRunner.query(
-      'ALTER TABLE IF EXISTS state_election_results ADD CONSTRAINT IF NOT EXISTS fk_state_election_results_candidates FOREIGN KEY (winner_id) REFERENCES candidates(id) ON DELETE CASCADE;',
+      'ALTER TABLE IF EXISTS state_election_results ADD CONSTRAINT fk_state_election_results_candidates FOREIGN KEY (winner_id) REFERENCES candidates(id) ON DELETE CASCADE;',
     );
     await queryRunner.query(
-      'ALTER TABLE IF EXISTS county_election_results ADD CONSTRAINT IF NOT EXISTS fk_county_election_results_elections FOREIGN KEY (election_id) REFERENCES elections(id) ON DELETE CASCADE;',
+      'ALTER TABLE IF EXISTS county_election_results ADD CONSTRAINT fk_county_election_results_elections FOREIGN KEY (election_id) REFERENCES elections(id) ON DELETE CASCADE;',
     );
     await queryRunner.query(
-      'ALTER TABLE IF EXISTS county_election_results ADD CONSTRAINT IF NOT EXISTS fk_county_election_results_counties FOREIGN KEY (county_id) REFERENCES counties(id) ON DELETE CASCADE;',
+      'ALTER TABLE IF EXISTS county_election_results ADD CONSTRAINT fk_county_election_results_counties FOREIGN KEY (county_id) REFERENCES counties(id) ON DELETE CASCADE;',
     );
     await queryRunner.query(
-      'ALTER TABLE IF EXISTS county_election_results ADD CONSTRAINT IF NOT EXISTS fk_county_election_results_candidates FOREIGN KEY (winner_id) REFERENCES candidates(id) ON DELETE CASCADE;',
+      'ALTER TABLE IF EXISTS county_election_results ADD CONSTRAINT fk_county_election_results_candidates FOREIGN KEY (winner_id) REFERENCES candidates(id) ON DELETE CASCADE;',
     );
     await queryRunner.query(
-      'ALTER TABLE IF EXISTS city_election_results ADD CONSTRAINT IF NOT EXISTS fk_city_election_results_elections FOREIGN KEY (election_id) REFERENCES elections(id) ON DELETE CASCADE;',
+      'ALTER TABLE IF EXISTS city_election_results ADD CONSTRAINT fk_city_election_results_elections FOREIGN KEY (election_id) REFERENCES elections(id) ON DELETE CASCADE;',
     );
     await queryRunner.query(
-      'ALTER TABLE IF EXISTS city_election_results ADD CONSTRAINT IF NOT EXISTS fk_city_election_results_cities FOREIGN KEY (city_id) REFERENCES cities(id) ON DELETE CASCADE;',
+      'ALTER TABLE IF EXISTS city_election_results ADD CONSTRAINT fk_city_election_results_cities FOREIGN KEY (city_id) REFERENCES cities(id) ON DELETE CASCADE;',
     );
     await queryRunner.query(
-      'ALTER TABLE IF EXISTS city_election_results ADD CONSTRAINT IF NOT EXISTS fk_city_election_results_candidates FOREIGN KEY (winner_id) REFERENCES candidates(id) ON DELETE CASCADE;',
+      'ALTER TABLE IF EXISTS city_election_results ADD CONSTRAINT fk_city_election_results_candidates FOREIGN KEY (winner_id) REFERENCES candidates(id) ON DELETE CASCADE;',
     );
     await queryRunner.query(
-      'ALTER TABLE IF EXISTS counties ADD CONSTRAINT IF NOT EXISTS fk_counties_states FOREIGN KEY (state_id) REFERENCES states(id) ON DELETE CASCADE;',
+      'ALTER TABLE IF EXISTS counties ADD CONSTRAINT fk_counties_states FOREIGN KEY (state_id) REFERENCES states(id) ON DELETE CASCADE;',
     );
     await queryRunner.query(
-      'ALTER TABLE IF EXISTS cities ADD CONSTRAINT IF NOT EXISTS fk_cities_states FOREIGN KEY (state_id) REFERENCES states(id) ON DELETE CASCADE;',
+      'ALTER TABLE IF EXISTS cities ADD CONSTRAINT fk_cities_states FOREIGN KEY (state_id) REFERENCES states(id) ON DELETE CASCADE;',
     );
     await queryRunner.query(
-      'ALTER TABLE IF EXISTS cities ADD CONSTRAINT IF NOT EXISTS fk_cities_counties FOREIGN KEY (county_id) REFERENCES counties(id) ON DELETE CASCADE;',
+      'ALTER TABLE IF EXISTS cities ADD CONSTRAINT fk_cities_counties FOREIGN KEY (county_id) REFERENCES counties(id) ON DELETE CASCADE;',
     );
   }
 
